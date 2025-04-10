@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Sépare le logo et les liens */
+    align-items: center;
+    padding: 20px 50px; /* Ajuste les marges pour plus d'espace */
+  }
+  
+  .navbar-logo img {
+    width: 150px; /* Taille du logo */
+    height: auto;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 30px; /* Espacement entre les liens */
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .navbar-links a:hover {
+    text-decoration: underline;
+  }
+  
