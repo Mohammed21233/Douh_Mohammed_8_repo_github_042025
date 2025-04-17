@@ -16,7 +16,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/logement/:id" element={<Logement />} /> {/* 👈 route pour la fiche logement */}
         <Route path="*" element={<ErrorPage />} />
-      </Routes>
+        </Routes>
       <Footer /> {/* 👈 Footer après toutes les routes */}
     </>
   );

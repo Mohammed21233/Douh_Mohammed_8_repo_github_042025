@@ -1,29 +1,57 @@
 .navbar {
-    display: flex;
-    justify-content: space-between; /* Sépare le logo et les liens */
-    align-items: center;
-    padding: 20px 50px; /* Ajuste les marges pour plus d'espace */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+}
+
+.navbar-logo img {
+  width: 150px;
+  height: auto;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-link.active {
+  text-decoration: underline;
+}
+
+@media (max-width: 390px) {
+  .navbar {
+    padding: 20px;
   }
-  
+
   .navbar-logo img {
-    width: 150px; /* Taille du logo */
+    width: 100px;
     height: auto;
   }
-  
+
   .navbar-links {
-    display: flex;
-    gap: 30px; /* Espacement entre les liens */
+    gap: 15px;
   }
-  
-  .navbar-links a {
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
+
+  .navbar-link {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
   }
-  
-  .navbar-links a:hover {
+
+  .navbar-link.active {
     text-decoration: underline;
   }
-  
+}

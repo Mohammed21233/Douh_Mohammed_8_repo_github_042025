@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../styleComponents/navbar.css";
-import logo from "../assets/LOGO.png"; // chemin vers l'image
+import logo from "../assets/LOGO.png";
 
 const Navbar = () => {
   return (
@@ -9,8 +9,18 @@ const Navbar = () => {
         <img src={logo} alt="Kasa" />
       </div>
       <div className="navbar-links">
-        <Link to="/">Accueil</Link>
-        <Link to="/about">À propos</Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "navbar-link active" : "navbar-link")}
+        >
+          Accueil
+        </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? "navbar-link active" : "navbar-link")}
+        >
+          À propos
+        </NavLink>
       </div>
     </nav>
   );

@@ -23,3 +23,23 @@
 
   }
   
+  @media (max-width: 390px) {
+    .footer {
+      width: 100vw; /* prend toute la largeur de l'écran */
+      padding: 30px 20px 20px;
+      margin-top: 30px;
+      border-radius: 0; /* on enlève les coins arrondis */
+      box-sizing: border-box; /* évite que le padding déborde */
+    }
+  
+    .footer-logo {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+  
+    .footer-text {
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+  

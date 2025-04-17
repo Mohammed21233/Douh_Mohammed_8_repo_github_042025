@@ -1,133 +1,228 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-
-
 .carousel {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    border-radius: 25px;
-    overflow: hidden;
-    margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+  padding: 0 15px;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+/* ✅ Modifié : le compteur des images centré en bas */
+.counter {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.logement-container {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.logement-info h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #ff6060;
+}
+
+.location {
+  color: black;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background-color: #ff6060;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.logement-host-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ✅ Nom et image de l’hôte sur la même ligne */
+.host-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.host-name {
+  color: #ff6060;
+  font-size: 14px;
+  margin: 0;
+}
+
+.host-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rating {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.star-image {
+  width: 20px;
+  height: 20px;
+  margin: 0 2px;
+}
+
+/* ✅ Collapses : largeur uniforme comme sur Figma */
+.logement-collapses {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.logement-collapses > div {
+  width: 100%;
+  max-width: 48%;
+}
+
+
+@media (max-width: 390px) {
+  .carousel {
+    height: 255px;
+    border-radius: 10px;
   }
-  
+
   .carousel-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 25px;
+    border-radius: 10px;
   }
-  
+
   .prev,
   .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 3rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    z-index: 1;
-    padding: 0 15px;
+    font-size: 2.2rem;
+    padding: 0 10px;
   }
-  
-  .prev {
-    left: 0;
-  }
-  
-  .next {
-    right: 0;
-  }
-  
+
   .counter {
-    position: absolute;
+    font-size: 0.8rem;
     bottom: 10px;
-    right: 50%;
-    transform: translateX(50%);
-    color: white;
-    font-size: 1rem;
   }
-  
+
   .logement-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .logement-info h1 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .location {
-    color: #ff6060;
-    margin-top: 5px;
-    font-weight: 500;
-  }
-  
-  .tags {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .tag {
-    background-color: #ff6060;
-    color: white;
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-  }
-  
-  .logement-host-rating {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 20px;
   }
-  
-  .host {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: right;
+
+  .logement-info h1 {
+    font-size: 18px;
   }
-  
-  .host p {
+
+  .location {
     font-size: 14px;
-    color: #ff6060;
   }
-  
+
+  .tags {
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+
+  .logement-host-rating {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .host-info {
+    gap: 8px;
+  }
+
+  .host-name {
+    font-size: 12px;
+  }
+
   .host-picture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 40px;
+    height: 40px;
   }
-  
+
   .rating {
-    display: flex;
-    gap: 5px;
+    justify-content: flex-start;
   }
-  
-  .star {
-    font-size: 20px;
-    color: #e3e3e3;
-  }
-  
-  .star.filled {
-    color: #ff6060;
-  }
-  
+
   .star-image {
-    width: 20px;
-    height: 20px;
-    margin: 0 2px;
+    width: 16px;
+    height: 16px;
+    margin: 0 1px;
   }
-  .logement-container {
-    font-family: 'Montserrat', sans-serif;
+
+  .logement-collapses {
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
   }
-  
+
+  .logement-collapses > div {
+    max-width: 100%;
+  }
+}

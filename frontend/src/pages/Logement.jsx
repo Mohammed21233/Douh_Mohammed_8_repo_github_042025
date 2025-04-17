@@ -1,83 +1,80 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import data from "../data.json";
-
+import logements from "../data.json";
+import ErrorPage from "./ErrorPage";
+import Slideshow from "../components/Slideshow"; 
+import Collapse from "../components/Collapse";
 import "./logement.css";
-import starActive from "../assets/star-active.png"; // Import image étoile
+import starActive from "../assets/star-active.png";
+import starInactive from "../assets/star-inactive.png";
 
-const Logement = () => {
+function Logement() {
   const { id } = useParams();
-  const logement = data.find((item) => item.id === id);
-  const [current, setCurrent] = useState(0);
+  const logement = logements.find((logement) => logement.id === id);
 
   if (!logement) {
-    return <div>Logement non trouvé</div>;
+    return <ErrorPage />;
   }
 
-  const total = logement.pictures.length;
-
-  const nextSlide = () => {
-    setCurrent(current === total - 1 ? 0 : current + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrent(current === 0 ? total - 1 : current - 1);
-  };
+  const rating = parseInt(logement.rating);
+  const stars = Array.from({ length: 5 }, (_, index) =>
+    index < rating ? starActive : starInactive
+  );
 
   return (
     <div className="logement-container">
-      {/* Carrousel */}
-      <div className="carousel">
-        <img
-          src={logement.pictures[current]}
-          alt={`Slide ${current + 1}`}
-          className="carousel-image"
-        />
-        {total > 1 && (
-          <>
-            <button className="prev" onClick={prevSlide}>‹</button>
-            <button className="next" onClick={nextSlide}>›</button>
-            <span className="counter">{current + 1} / {total}</span>
-          </>
-        )}
-      </div>
-
-      {/* Infos logement */}
+      <Slideshow pictures={logement.pictures} /> 
+      
       <div className="logement-header">
         <div className="logement-info">
           <h1>{logement.title}</h1>
           <p className="location">{logement.location}</p>
           <div className="tags">
             {logement.tags.map((tag, index) => (
-              <span key={index} className="tag">{tag}</span>
+              <span key={index} className="tag">
+                {tag}
+              </span>
             ))}
           </div>
         </div>
 
         <div className="logement-host-rating">
-          <div className="host">
-            <p>{logement.host.name}</p>
+          <div className="host-info">
+            <p className="host-name">{logement.host.name}</p>
             <img
+              className="host-picture"
               src={logement.host.picture}
               alt={logement.host.name}
-              className="host-picture"
             />
           </div>
-
           <div className="rating">
-            {[1, 2, 3, 4, 5].map((star) => (
+            {stars.map((star, index) => (
               <img
-                key={star}
-                src={star <= parseInt(logement.rating) ? starActive : ""}
-                alt="star"
+                key={index}
+                src={star}
+                alt={index < rating ? "star filled" : "star empty"}
                 className="star-image"
               />
             ))}
           </div>
         </div>
       </div>
+
+      <div className="logement-collapses">
+        <Collapse title="Description">
+          <p>{logement.description}</p>
+        </Collapse>
+
+        <Collapse title="Équipements">
+          <ul>
+            {logement.equipments.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </Collapse>
+      </div>
     </div>
   );
-};
+}
 
 export default Logement;

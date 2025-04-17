@@ -1,0 +1,80 @@
+.collapse-container {
+    margin: 20px 0;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .collapse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff6060;
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .collapse-header h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .arrow-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .arrow-icon.open {
+    transform: rotate(180deg); /* flèche vers le bas */
+  }
+  
+  .arrow-icon.closed {
+    transform: rotate(0deg); /* flèche vers le haut */
+  }
+  
+  .collapse-content {
+    padding: 15px 20px;
+    background-color: white;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scaleY(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+  .logement-collapses {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Pour que ça passe en colonne si l'écran est petit */
+  }
+  
+  .logement-collapses .collapse {
+    flex: 1;
+    min-width: 300px;
+    max-width: 47%; /* Pour éviter qu'elles soient trop larges */
+  }
+    
+
+  
+  @media (max-width: 375px) {
+    .collapse-header h2 {
+      font-size: 16px;
+    }
+  
+    .collapse-content {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
