@@ -142,7 +142,7 @@
 }
 
 
-@media (max-width: 390px) {
+@media (max-width: 767px) {
   .carousel {
     height: 255px;
     border-radius: 10px;
@@ -224,5 +224,13 @@
 
   .logement-collapses > div {
     max-width: 100%;
+  }
+
+  .slideshow {
+   height: 255px;
+  }
+  
+  .logement-container {
+    padding: 0 10px;
   }
 }

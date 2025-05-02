@@ -29,7 +29,7 @@ const Home = () => {
       </div>
 
       {/* Liste des logements */}
-      <section className="logement-list">
+      <section className="location-grid">
         {logements.map((logement) => (
           <Card
             key={logement.id}

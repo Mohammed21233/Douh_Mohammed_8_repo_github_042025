@@ -15,7 +15,7 @@ export default function Collapse({ title, content, children }) {
 
   return (
     <div className="collapse-container">
-      <div className="collapse-header" onClick={toggleCollapse}>
+      <div className="collapse-header" data-testid='click'  onClick={toggleCollapse}>
         <h2>{title}</h2>
         <img
           src={arrow}

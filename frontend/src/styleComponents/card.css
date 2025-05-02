@@ -36,5 +36,15 @@
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
     z-index: 2;
+    text-align: left;
   }
   
+
+  @media (max-width: 767px) {
+.card {
+  width: 95%;
+  max-width: 335px;
+  margin: 0 auto;
+  height: 255px;
+}
+  }

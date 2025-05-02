@@ -23,7 +23,7 @@
 
   }
   
-  @media (max-width: 390px) {
+  @media (max-width: 767px) {
     .footer {
       width: 100vw; /* prend toute la largeur de l'écran */
       padding: 30px 20px 20px;
