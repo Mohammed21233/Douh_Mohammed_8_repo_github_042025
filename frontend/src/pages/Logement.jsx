@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logements from "../data.json";
 import ErrorPage from "./ErrorPage";
-import Slideshow from "../components/Slideshow"; 
+import Slideshow from "../components/Slideshow";
 import Collapse from "../components/Collapse";
 import "./logement.css";
 import starActive from "../assets/star-active.png";
@@ -10,11 +9,29 @@ import starInactive from "../assets/star-inactive.png";
 
 function Logement() {
   const { id } = useParams();
-  const logement = logements.find((logement) => logement.id === id);
+  const [logement, setLogement] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!logement) {
-    return <ErrorPage />;
-  }
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/properties/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Not found");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setLogement(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) return <div>Chargement...</div>;
+  if (!logement) return <ErrorPage />;
 
   const rating = parseInt(logement.rating);
   const stars = Array.from({ length: 5 }, (_, index) =>
@@ -23,8 +40,7 @@ function Logement() {
 
   return (
     <div className="logement-container">
-      <Slideshow pictures={logement.pictures} /> 
-      
+      <Slideshow pictures={logement.pictures} />
       <div className="logement-header">
         <div className="logement-info">
           <h1>{logement.title}</h1>
